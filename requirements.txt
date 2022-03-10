@@ -1,0 +1,3 @@
+#-- Sample file for Python dependencies
+requests
+Office365-REST-Python-Client
