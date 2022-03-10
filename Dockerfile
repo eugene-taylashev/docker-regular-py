@@ -3,7 +3,7 @@ FROM python:3.10.2-alpine3.15
 ARG BUILD_DATE
 ENV TZ=America/Toronto
 ENV VERBOSE=1
-ENV DELAY_SEC=30        #-- delay between script execution is seconds
+ENV DELAY_SEC=30
 ENV SCRIPT2RUN=test.py
 
 #-- Install addition packages to install requirements
@@ -37,6 +37,7 @@ RUN apk del --no-cache gcc openssl-dev libffi-dev musl-dev
 #    echo "$TZ" >  /etc/timezone;
 
 COPY ./entrypoint.sh /
+RUN chmod 775 /entrypoint.sh
 
 #-- Simple test script to check functionality
 COPY ./test.py $WORKDIR
@@ -44,6 +45,6 @@ COPY ./test.py $WORKDIR
 STOPSIGNAL SIGINT
 
 #-- $WORKDIR could be mounted as an external volume
-VOLUME $WORKDIR
+VOLUME /usr/src/app
 
 CMD ["/entrypoint.sh"]

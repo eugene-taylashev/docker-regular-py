@@ -33,12 +33,6 @@ dlog(){
 dlog '============================================================================='
 dlog "[ok] - starting entrypoint.sh ver $SVER"
 
-#-- Modify TimeZone  if needed
-if [ "$TZ" != "$(cat /etc/timezone)" ] ; then
-    cp /usr/share/zoneinfo/$TZ /etc/localtime; \
-    echo "$TZ" >  /etc/timezone;
-fi
-
 
 #-- start "daemon" as infinit loop
 while true
