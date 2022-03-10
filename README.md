@@ -18,5 +18,5 @@ docker run -d \
   -e DELAY_SEC=300 \
   -e SCRIPT2RUN=your_script  \
   -v /your_script_dir:/usr/src/app \
-  etaylashev/regular_py
+  etaylashev/regular-py
 ```
